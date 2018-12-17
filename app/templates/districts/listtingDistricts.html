@@ -1,0 +1,37 @@
+{% extends "home.html" %}
+{% block content %}
+    <div class="row">
+        <div class="col-9">
+            <h3>Danh sách các quận huyện</h3>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                      <th width="50">#</th>
+                      <th scope="col">Tên quận huyện {{ count }}</th>
+                      <th scope="col">Mã</th>
+                      <th scope="col">Thành phố</th>
+                      <th width="200">Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for district in districts %}
+                        <tr>
+                            <th scope="row">{{ loop.index }}</th>
+                            <td>{{ district.name }}</td>
+                            <td>{{ district.code }}</td>
+                            <td><a href="{{ url_for('detail_city', id=district.city.id) }}">{{ district.City.name }}</a></td>
+                            <td>
+                                <a href="{{ url_for('detail_district', id=district.id) }}"><button type="button" class="btn btn-primary btn-sm">Chi tiết</button></a>
+                                <a href="{{ url_for('update_district', id=district.id) }}"><button type="button" class="btn btn-success btn-sm">Sửa</button></a>
+                                <a href="{{ url_for('destroy_district', id=district.id) }}"><button type="button" class="btn btn-danger btn-sm">Xóa</button></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-3 text-right">
+            <a href="{{ url_for('store_district') }}"><button type="button" class="btn btn-primary btn-sm">Thêm mới</button></a>
+        </div>
+    </div>
+{% endblock content %}

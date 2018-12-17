@@ -1,0 +1,21 @@
+{% extends "home.html" %}
+{% block content %}
+    <div style="display: flex;justify-content: space-between;">
+        <h3>Thông tin chi tiết thành phố {{ city.name }}</h3>
+        <a href="{{ url_for('listting_cities') }}"><button type="button" class="btn btn-primary btn-sm">Quay lại</button></a>
+    </div>
+    <hr>
+    <div>
+        <p>Mã: {{ city.code }}</p>
+    </div>
+    <div>
+        {% if city.district %}
+            <p>Danh sách quận, huyện</p>
+            <ul>
+                {% for district in city.district %}
+                    <li><a href="{{ url_for('detail_district', id=district.id) }}">{{ district.name }}</a></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+{% endblock content %}

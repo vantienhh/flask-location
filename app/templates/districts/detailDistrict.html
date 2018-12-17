@@ -1,0 +1,12 @@
+{% extends "home.html" %}
+{% block content %}
+    <div style="display: flex;justify-content: space-between;">
+        <h3>Thông tin chi tiết quận huyện {{ district.name }}</h3>
+        <a href="{{ url_for('listting_districts') }}"><button type="button" class="btn btn-primary btn-sm">Quay lại</button></a>
+    </div>
+    <hr>
+    <div>
+        <p>Mã: {{ district.code }}</p>
+        <p>Thuộc thành phố: <a href="{{ url_for('detail_city',id=district.City.id) }}">{{ district.City.name }}</a></p>
+    </div>
+{% endblock content %}
