@@ -57,12 +57,13 @@ def edit(request):
             dict(name=form.name.data, code=form.code.data))
         db.session.commit()
         return redirect(url_for('listting_cities'))
+    cityError = form
     city = {
         'name': form.name.data,
         'code': form.code.data,
         'id': request.form['id']
     }
-    return render_template('cities/editCity.html', title="update city", city=city)
+    return render_template('cities/editCity.html', title="update city", city=city, cityError=cityError)
 
 
 # destroy city

@@ -4,13 +4,13 @@
         <div class="offset-3 col-6">
             <h3>Chỉnh sửa quận huyện</h3>
             <p></p>
-            {% if district %}
-                {% if district.name.errors or district.code.errors %}
+            {% if district and districtError %}
+                {% if districtError.name.errors or districtError.code.errors %}
                     <div class="text-danger">
-                        {% for error in district.name.errors %}
+                        {% for error in districtError.name.errors %}
                             <p>- {{ error }}</p>
                         {% endfor %}
-                        {% for error in district.code.errors %}
+                        {% for error in districtError.code.errors %}
                             <p>- {{ error }}</p>
                         {% endfor %}
                     </div>

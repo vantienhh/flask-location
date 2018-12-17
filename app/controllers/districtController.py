@@ -60,12 +60,13 @@ def edit(request, cities):
             dict(name=form.name.data, code=form.code.data, city_id=form.city_id.data))
         db.session.commit()
         return redirect(url_for('listting_districts'))
+    districtError = form
     district = {
         'name': form.name.data,
         'code': form.code.data,
         'id': request.form['id']
     }
-    return render_template('districts/editDistrict.html', title="update district", district=district, cities=cities)
+    return render_template('districts/editDistrict.html', title="update district", district=district, cities=cities, districtError=districtError)
 
 
 # destroy district
